@@ -16,7 +16,7 @@ public class ButtonThread implements Runnable {
 	}
 	
 	private void waitUntilTimedOut() {
-		while (System.nanoTime() >= startTime + 1000000000) { // 1000000000ns should be 1s
+		while (System.nanoTime() >= startTime + 10000000) { // 10000000ns should be 10ms
 			// Just wait
 		}
 	}

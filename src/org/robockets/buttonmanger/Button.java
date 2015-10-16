@@ -6,20 +6,19 @@ public class Button {
 	protected int buttonNumber = 0, joystickNumber = 0;
 	protected boolean running = false;
 	
-	private Command command;
+	protected Command command;
 	
 	public Button(int joystickNumber, int buttonNumber, Command command) {
 		this.buttonNumber = buttonNumber;
 		this.joystickNumber = joystickNumber;
 		this.command = command;
-		
 	}
 	
 	protected void check() {
 		if (ButtonManager.getButtonState(joystickNumber, buttonNumber)) {
-			run();
+			pressed();
 		} else {
-			isFinished();
+			notPressed();
 		}
 	}
 	
@@ -27,16 +26,23 @@ public class Button {
 		return running;
 	}
 	
-	protected boolean isFinished() {
-		return false;
+	protected void notPressed() {
+		running = false;
 	}
 	
-	protected void run() {
+	protected void pressed() {
+		if (!running) {
+			start();
+		}
+		
 		running = true;
-		command.start();
 	}
 	
-	protected void stop() {
+	protected void start() {
+		command.start(); // Should run over and over again
+	}
+	
+	public void stop() {
 		running = false;
 		command.cancel();
 	}
