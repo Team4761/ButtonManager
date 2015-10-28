@@ -20,12 +20,14 @@ public class ToggleButton extends Button {
 	}
 	
 	public void pressed() {
-		if (!toggle && !running) {
-			toggle = true;
-			super.start();
-		} else if (toggle && !running) {
-			toggle = false;
-			super.stop();
+		if (!running) {
+			if (!toggle) {
+				toggle = true;
+				super.start();
+			} else {
+				toggle = false;
+				super.stop();
+			}
 		}
 	}
 	
