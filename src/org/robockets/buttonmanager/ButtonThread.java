@@ -1,4 +1,4 @@
-package org.robockets.buttonmanger;
+package org.robockets.buttonmanager;
 
 public class ButtonThread implements Runnable {
 	public void run() {
