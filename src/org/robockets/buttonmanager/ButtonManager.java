@@ -1,4 +1,4 @@
-package org.robockets.buttonmanger;
+package org.robockets.buttonmanager;
 
 import java.util.ArrayList;
 

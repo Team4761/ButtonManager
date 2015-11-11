@@ -1,4 +1,4 @@
-package org.robockets.buttonmanger;
+package org.robockets.buttonmanager;
 
 import edu.wpi.first.wpilibj.command.Command;
 
