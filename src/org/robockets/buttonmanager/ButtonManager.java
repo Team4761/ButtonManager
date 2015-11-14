@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.Joystick;
  * The main class that people will interact with
  * when creating buttons.
  * This class should only be used statically.
- * @author jakekinsella
  */
 public class ButtonManager {
 	private static ArrayList<Joystick> joysticks = new ArrayList<Joystick>();
@@ -42,7 +41,7 @@ public class ButtonManager {
 	}
 	
 	/**
-	 * A static method to get the state of a button
+	 * A static method to get the state of a button.
 	 * @param joystick the joystick port that the button is on
 	 * @param button the button number
 	 * @return the state of the button
@@ -52,7 +51,7 @@ public class ButtonManager {
 	}
 	
 	/**
-	 * A static method to bind a new button
+	 * A static method to bind a new button.
 	 * @param button an object with Button as a superclass
 	 */
 	public static void addButton(Button button) {
