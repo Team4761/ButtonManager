@@ -58,6 +58,9 @@ public class ButtonManager {
 		boundButtons.add(button);
 	}
 
+	/**
+	 * A static method that is used by ButtonThead to check each bound button.
+	 */
 	protected static void checkButtons() {
 		for (int i = 0; i < boundButtons.size(); i++) {
 			boundButtons.get(i).check();

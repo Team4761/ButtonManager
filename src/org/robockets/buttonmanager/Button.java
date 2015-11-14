@@ -12,12 +12,23 @@ public class Button {
 	
 	protected Command command;
 	
+	/**
+	 * Class constructor.
+	 * @param joystickNumber The joystick port that the button will be bound to
+	 * @param buttonNumber The button number that the button will be bound to
+	 * @param command The command that the button will run when pressed
+	 */
+	
 	public Button(int joystickNumber, int buttonNumber, Command command) {
 		this.buttonNumber = buttonNumber;
 		this.joystickNumber = joystickNumber;
 		this.command = command;
 	}
 	
+	/**
+	 * A method that is called by ButtonManager's check method.
+	 * Checks if button is pressed and executes based on that result.
+	 */
 	protected void check() {
 		if (ButtonManager.getButtonState(joystickNumber, buttonNumber)) {
 			pressed();
@@ -26,14 +37,24 @@ public class Button {
 		}
 	}
 	
+	/**
+	 * Check if button is executing
+	 * @return the state of the execution
+	 */
 	public boolean isRunning() {
 		return running;
 	}
 	
+	/**
+	 * Ran when the button is notPressed
+	 */
 	protected void notPressed() {
 		running = false;
 	}
 	
+	/**
+	 * Ran when the button is pressed
+	 */
 	protected void pressed() {
 		if (!running) {
 			start();
@@ -42,11 +63,18 @@ public class Button {
 		running = true;
 	}
 	
+	/**
+	 * Starts the command.
+	 * The command automatically ends its execution when isFinished() returns true
+	 */
 	protected void start() {
 		command.start(); // Should run over and over again
 	}
 	
-	public void stop() {
+	/**
+	 * Stops the command.
+	 */
+	protected void stop() {
 		running = false;
 		command.cancel();
 	}
