@@ -2,6 +2,10 @@ package org.robockets.buttonmanager;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * The superclass of all other buttons.
+ * This class should not be used to bind buttons.
+ */
 public class Button {
 	protected int buttonNumber = 0, joystickNumber = 0;
 	protected boolean running = false;
