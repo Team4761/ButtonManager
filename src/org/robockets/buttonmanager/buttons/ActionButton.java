@@ -22,6 +22,9 @@ public class ActionButton extends Button {
 		this.killOnRelease = killOnRelease;
 	}
 	
+	/**
+	 * Ran when the button is notPressed
+	 */
 	protected void notPressed() {
 		if (killOnRelease) {
 			stop();

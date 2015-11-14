@@ -5,6 +5,10 @@ package org.robockets.buttonmanager;
  * This thread must be started in teleopInit() or robotInit().
  */
 public class ButtonThread implements Runnable {
+	
+	/**
+	 * Inherited by Runnable.
+	 */
 	public void run() {
 		while (true) {
 			ButtonManager.checkButtons();
