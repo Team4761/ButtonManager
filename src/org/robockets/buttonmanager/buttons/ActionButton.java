@@ -23,11 +23,13 @@ public class ActionButton extends Button {
 	}
 	
 	/**
-	 * Ran when the button is notPressed
+	 * Ran when the button is not pressed
 	 */
 	protected void notPressed() {
 		if (killOnRelease) {
 			stop();
 		}
+		
+		super.notPressed();
 	}
 }
