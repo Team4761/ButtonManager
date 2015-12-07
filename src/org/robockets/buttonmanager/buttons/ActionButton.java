@@ -29,5 +29,7 @@ public class ActionButton extends Button {
 		if (killOnRelease) {
 			stop();
 		}
+		
+		super.notPressed();
 	}
 }
