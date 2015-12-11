@@ -10,8 +10,18 @@ import edu.wpi.first.wpilibj.Joystick;
  * This class should only be used statically.
  */
 public class ButtonManager {
+	
+	private static Thread thread;
 	private static ArrayList<Joystick> joysticks = new ArrayList<Joystick>();
 	private static ArrayList<Button> boundButtons = new ArrayList<Button>();
+	
+	/**
+	 * Call only once in robotInit. Starts the ButtonManager thread.
+	 */
+	public static void start() {
+		thread = new Thread(new ButtonThread());
+		thread.start();
+	}
 	
 	/**
 	 * A static method to add a joystick for use with binding buttons to.
