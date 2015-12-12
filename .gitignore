@@ -1,0 +1,10 @@
+#Binaries
+*.class
+*.jar
+bin/
+dist/
+
+#Eclipse
+.classpath
+.project
+.settings/

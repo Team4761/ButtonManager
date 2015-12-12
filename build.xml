@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<project name="ButtonManager" basedir="." default="jar">
+
+   <property name="src.dir" value="src"/>
+   <property name="bin.dir" value="bin"/>
+   <property name="dist.dir" value="dist"/>
+
+   <path id="classpath">
+      <fileset dir="${user.home}/wpilib/java/current/lib">
+         <include name="*.jar"/>
+      </fileset>
+   </path>
+
+   <target name="compile" description="Compile source files to .class files">
+      <mkdir dir="${bin.dir}"/>
+      <javac destdir="${bin.dir}" failonerror="true" includeantruntime="false">
+         <src path="${src.dir}"/>
+         <classpath refid="classpath"/>
+      </javac>
+   </target>
+   
+   <target name="jar" depends="compile" description="Make JAR archive">
+      <mkdir dir="${dist.dir}"/>
+      <jar destfile="${dist.dir}/ButtonManager.jar" basedir="${bin.dir}"/>
+   </target>
+
+   <target name="clean" description="Clean output directories">
+      <delete>
+         <fileset dir="${bin.dir}">
+            <include name="**/*.class"/>
+         </fileset>
+         <fileset dir="${dist.dir}">
+            <include name="**/*.jar"/>
+         </fileset>
+      </delete>
+   </target>
+
+   <!-- 
+   Only use on computers that don't have WPILib installed.
+   Bad things _might_ happen but I don't know for sure and don't want to volunteer my installation as a guinea pig.
+   -->
+   <target name="wpilib-for-ci" description="Download and install WPILibJ for use on CI server">
+      <get src="https://gist.githubusercontent.com/simon-andrews/0127707da461e543cb76/raw/dl_wpilibjars.py" dest="dl_wpilibjars.py"/>
+      <exec executable="python3">
+         <arg value="dl_wpilibjars.py"/>
+      </exec>
+      <move file="lib" tofile="${user.home}/wpilib/java/current/lib"/>
+      <delete file="dl_wpilibjars.py"/>
+   </target>
+   
+</project>
